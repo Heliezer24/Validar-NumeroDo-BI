@@ -28,9 +28,6 @@ public class ValidarBI {
 
     public String getCompara() {
         return Compara.group();
-    }
-    
-    
-         
+    }    
 }
 
