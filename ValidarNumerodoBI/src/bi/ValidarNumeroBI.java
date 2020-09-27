@@ -1,5 +1,8 @@
 package bi;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,7 +15,8 @@ package bi;
  * @author HELIEZERTOMAS MARIA
  */
 public class ValidarNumeroBI extends javax.swing.JFrame {
-        ValidarBI valido= new ValidarBI();
+    
+   
     /**
      * Creates new form ValidarNumeroBI
      */
@@ -20,6 +24,7 @@ public class ValidarNumeroBI extends javax.swing.JFrame {
         initComponents();
         
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,25 +120,38 @@ public class ValidarNumeroBI extends javax.swing.JFrame {
     private void btnValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarActionPerformed
         // TODO add your handling code here:
         
-        valido.Validar(txtBI.getText());
-        try{
-            
-            
-            txtRes.setText("* Número do B.I e valido: "+valido.getCompara());
-            
-        }catch(IllegalStateException e){
-            
-            txtRes.setText("* Não e correspondente com número do bilhete de identidade de ANGOLA");
-        }
+        //String palavra="007270402BO030";
+        String expReg="\\d{9}[A-Z]{2}\\d{3}";
+        
+        Pattern expRegComp= Pattern.compile(expReg);
+        Matcher compara = expRegComp.matcher(txtBI.getText());
+        //System.out.println(txtBI.getText());
+        
+        String outra= txtBI.getText().substring(9,11);
+        
+        //System.out.println(outra);
+        
+        
+        String [] prov = {"LA", "ME", "ZE", "BE", "BA", "BO", "CA", "CC", "CN", "CS", "CE", "HO", "HA", "LN", "LS", "MO", "NE", "UE"};
+        
         
        
        
-       /*if(valido.Validar(txtBI.getText()))
-           txtRes.setText("* Número do B.I e valido: "+valido.getCompara());
-       else
+      if(compara.find()){
+          for (int i=0; prov.length > i ;i++) {
+            
+                if(prov[i].equals(outra)){
+                    txtRes.setText("* Número do B.I e valido: "+compara.group());
+                    break;
+                }else {
+                    txtRes.setText("* Não e correspondente com número do bilhete de identidade de ANGOLA");
+                    
+                }
+            }
+      }else
            txtRes.setText("* Não e correspondente com número do bilhete de identidade de ANGOLA");
         
-       */
+       
        txtBI.setText("");
         
         
