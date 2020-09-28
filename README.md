@@ -5,5 +5,8 @@ O número do BI e valido se conter abreviações de qualquer uma das provincia d
 
 {"LA", "ME", "ZE", "BE", "BA", "BO", "CA", "CC", "CN", "CS", "CE", "HO", "HA", "LN", "LS", "MO", "NE", "UE"}
 
+Exemplo de número de B.I valido
+009876532BO485
+
 Aplicando conceitos de Expressões Regulares
 
